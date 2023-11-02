@@ -3,3 +3,6 @@ out/
 
 # IDE
 .idea/
+
+/release-builder
+*.tar.gz

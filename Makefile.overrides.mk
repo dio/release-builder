@@ -14,3 +14,11 @@
 
 # this repo is on the container plan by default
 BUILD_WITH_CONTAINER ?= 1
+
+VERSION ?= dev
+ARCH ?= amd64
+OS ?= linux
+
+tarball:
+	@GOARCH=$(ARCH) GOOS=$(OS) CGO_ENABLED=0 go build -ldflags="-s -w -X 'main.version=$(VERSION)'" .
+	@tar -czf release-builder-$(VERSION)-$(ARCH).tar.gz release-builder
